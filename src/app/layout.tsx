@@ -1,14 +1,15 @@
+import { Roboto_Flex, Roboto_Slab } from 'next/font/google'
 import type { Metadata } from 'next'
-import localFont from 'next/font/local'
 import './globals.css'
+import { cn } from '@/lib/utils'
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
+const robotoSans = Roboto_Flex({
+  subsets: ['latin'],
+  variable: '--font-roboto-sans',
 })
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
+const robotoSerif = Roboto_Slab({
+  subsets: ['latin'],
+  variable: '--font-roboto-serif',
 })
 
 export const metadata: Metadata = {
@@ -24,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col`}
+        className={cn(
+          `${robotoSans.variable} ${robotoSerif.variable}`,
+          'flex min-h-screen flex-col',
+        )}
       >
         <main className="flex-1">{children}</main>
       </body>

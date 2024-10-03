@@ -52,8 +52,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-geist-sans)'],
-        mono: ['var(--font-geist-mono)'],
+        sans: ['var(--font-roboto-sans)'],
+        serif: ['var(--font-roboto-serif)'],
       },
       borderRadius: {
         lg: 'var(--radius)',
