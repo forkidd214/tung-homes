@@ -28,11 +28,11 @@ export default function RootLayout({
       <body
         className={cn(
           `${robotoSans.variable} ${robotoSerif.variable}`,
-          'flex min-h-screen flex-col',
+          'flex min-h-svh flex-col',
         )}
       >
         <Header />
-        <main className="flex-1 px-4 pt-24">{children}</main>
+        <main className="flex-1">{children}</main>
       </body>
     </html>
   )
