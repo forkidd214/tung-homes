@@ -2,6 +2,7 @@ import { Roboto_Flex, Roboto_Slab } from 'next/font/google'
 import type { Metadata } from 'next'
 import './globals.css'
 import { cn } from '@/lib/utils'
+import Header from './_components/header'
 
 const robotoSans = Roboto_Flex({
   subsets: ['latin'],
@@ -30,7 +31,8 @@ export default function RootLayout({
           'flex min-h-screen flex-col',
         )}
       >
-        <main className="flex-1">{children}</main>
+        <Header />
+        <main className="flex-1 px-4 pt-24">{children}</main>
       </body>
     </html>
   )
