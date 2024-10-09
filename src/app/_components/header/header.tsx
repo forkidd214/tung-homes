@@ -23,7 +23,7 @@ export default function Header({}: HeaderProps) {
         state === 'solid' && 'bg-primary',
       )}
     >
-      <Link href={'/'}>
+      <Link href={'/'} aria-label='Tung Homes'>
         <Logo className="h-12 w-auto lg:h-14" />
       </Link>
     </header>
