@@ -43,10 +43,10 @@ RUN pnpm run build
 
 
 ##### TEST
-# FROM deps AS test
-# COPY . .
-# ENV NODE_ENV=test
-# RUN pnpm run test
+FROM deps AS test
+COPY . .
+ENV NODE_ENV=test
+RUN pnpm run test
 
 
 ##### PRODUCTION
