@@ -2,22 +2,30 @@
 
 import { useLayoutEffect, useState } from 'react'
 
+import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import Logo from '../logo'
 
-export default function Header() {
+type HeaderProps = {}
+
+export default function Header({}: HeaderProps) {
   const state = useHeaderScroll()
 
   return (
     <header
       className={cn(
-        'fixed top-0 z-50 w-full px-4 py-8 text-primary-foreground',
+        'fixed top-0 z-50 w-full px-8 py-8',
+        'flex items-center justify-between',
+        'text-primary-foreground',
         'transition-all delay-100 duration-200 ease-in',
         state === 'hidden' && '-translate-y-full',
         state === 'transparent' && 'bg-transparent',
         state === 'solid' && 'bg-primary',
       )}
     >
-      Navbar
+      <Link href={'/'}>
+        <Logo className="h-12 w-auto lg:h-14" />
+      </Link>
     </header>
   )
 }
