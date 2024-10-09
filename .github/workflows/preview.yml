@@ -41,6 +41,7 @@ jobs:
         run: echo "Running mock end-to-end tests... testing complete"
 
   preview:
+    name: Preview
     runs-on: ubuntu-latest
     needs: [lint, e2e]
     steps:
