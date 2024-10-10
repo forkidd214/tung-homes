@@ -77,6 +77,7 @@ jobs:
     needs: [lint, e2e]
     permissions:
       pull-requests: write
+      contents: read
     env:
       VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
       VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -109,7 +110,7 @@ jobs:
         id: deploy
         run: |
           DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
-          echo "Vercel URL: $DEPLOY_URL"
+          echo "Vercel Preview URL: $DEPLOY_URL"
           echo "::set-output name=url::$DEPLOY_URL"
 
       - name: Post or Update Vercel Deployment URL to PR
