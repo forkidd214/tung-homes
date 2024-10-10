@@ -111,7 +111,7 @@ jobs:
         run: |
           DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})
           echo "Vercel Preview URL: $DEPLOY_URL"
-          echo "::set-output name=url::$DEPLOY_URL"
+          echo "url=$DEPLOY_URL" >> $GITHUB_OUTPUT
 
       - name: Post or Update Vercel Deployment URL to PR
         uses: marocchino/sticky-pull-request-comment@v2
