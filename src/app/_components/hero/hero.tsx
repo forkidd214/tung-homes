@@ -1,6 +1,10 @@
+import { Phone } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
+
 import hero from '../../../../public/images/hero.webp'
 import { cn } from '@/lib/utils'
+import { Button } from '@/components/ui/button'
 
 type HeroProps = {}
 
@@ -35,9 +39,12 @@ export default function Hero({}: HeroProps) {
             Building More Than Your Dream Home
           </h1>
         </div>
-        <button className="text-accent-foreground-foreground rounded-full bg-accent px-8 py-4 font-sans uppercase">
-          Talk to our team
-        </button>
+        <Button asChild variant={'accent'} className="space-x-2">
+          <Link href="tel:+10086">
+            <Phone className="h-5" />
+            <span>Talk to our team</span>
+          </Link>
+        </Button>
       </div>
     </section>
   )
