@@ -1,9 +1,13 @@
+'use client'
+
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/data'
 import {
+  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -14,6 +18,26 @@ import {
 type OurHomesProps = {}
 
 export default function OurHomes({}: OurHomesProps) {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [scrollProgress, setScrollProgress] = React.useState(0)
+
+  const onScroll = React.useCallback((api: CarouselApi) => {
+    if (!api) {
+      return
+    }
+    const progress = Math.max(0, Math.min(1, api?.scrollProgress()))
+    setScrollProgress(progress)
+  }, [])
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    onScroll(api)
+    api.on('reInit', onScroll).on('scroll', onScroll).on('slideFocus', onScroll)
+  }, [api, onScroll])
+
   return (
     <section className={cn('relative isolate mx-auto max-w-7xl px-8 py-16')}>
       {/* Title */}
@@ -28,6 +52,7 @@ export default function OurHomes({}: OurHomesProps) {
 
       {/* Carousel */}
       <Carousel
+        setApi={setApi}
         opts={{
           align: 'start',
           loop: true,
@@ -64,12 +89,16 @@ export default function OurHomes({}: OurHomesProps) {
         <div
           // TODO: Add progress animation
           className={cn(
-            'mr-8 w-fit space-x-0 rounded-full border',
-            'shadow *:border-0 *:text-accent hover:*:bg-background hover:*:text-accent',
+            'relative isolate mr-8 w-fit space-x-0 rounded-full border shadow',
+            '*:border-0 *:text-accent hover:*:bg-background hover:*:text-accent',
           )}
         >
           <CarouselPrevious className="rounded-r-none" />
           <CarouselNext className="rounded-l-none" />
+          <ProgressBorder
+            progress={scrollProgress}
+            className="absolute inset-0 -z-10 grid place-content-center"
+          />
         </div>
       </Carousel>
     </section>
@@ -80,7 +109,7 @@ type ProjectCardProps = {
   href: string
   children: React.ReactNode
   title: string
-  index: number
+  index?: number
   className?: string
 }
 
@@ -96,10 +125,43 @@ function ProjectCard({
       <div className={cn('relative overflow-hidden', className)}>
         <div className="h-full">{children}</div>
         <div className="absolute bottom-8 left-0 flex flex-row items-baseline justify-between gap-4 bg-primary/75 px-4 py-2 font-sans uppercase text-primary-foreground backdrop-blur">
-          <span className="text-accent">{index}</span>
+          {index !== undefined && <span className="text-accent">{index}</span>}
           <span>{title}</span>
         </div>
       </div>
     </Link>
+  )
+}
+
+type ProgressBorderProps = {
+  className?: string
+  progress: number // [0, 1]
+}
+
+function ProgressBorder({ progress, className }: ProgressBorderProps) {
+  return (
+    <div className={cn(className)}>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="120"
+        height="60"
+        viewBox="-2 -2 116 60"
+      >
+        <title>Progress Border</title>
+        <rect
+          x="0"
+          y="0"
+          width="112"
+          height="56"
+          rx="28"
+          ry="28"
+          fill="transparent"
+          strokeWidth="4"
+          stroke="currentColor"
+          strokeDasharray="288"
+          strokeDashoffset={288 - progress * 288}
+        />
+      </svg>
+    </div>
   )
 }
