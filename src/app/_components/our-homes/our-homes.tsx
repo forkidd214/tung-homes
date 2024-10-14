@@ -122,7 +122,7 @@ function ProjectCard({
   className,
 }: ProjectCardProps) {
   return (
-    <Link href={href}>
+    <Link href={href} aria-label={`Project ${index ?? ''}: ${title}`}>
       <div className={cn('relative overflow-hidden', className)}>
         <div className="relative h-full">{children}</div>
         <div className="absolute bottom-8 left-0 flex flex-row items-baseline justify-between gap-4 bg-primary/75 px-4 py-2 font-sans uppercase text-primary-foreground backdrop-blur">
