@@ -75,6 +75,7 @@ export default function OurHomes({}: OurHomesProps) {
                   src={project.images[0]}
                   alt={project.images[0].alt}
                   fill
+                  sizes="(min-width: 1024px) 24rem, 83.33%"
                   style={{
                     objectFit: 'cover',
                   }}
@@ -123,7 +124,7 @@ function ProjectCard({
   return (
     <Link href={href}>
       <div className={cn('relative overflow-hidden', className)}>
-        <div className="h-full">{children}</div>
+        <div className="relative h-full">{children}</div>
         <div className="absolute bottom-8 left-0 flex flex-row items-baseline justify-between gap-4 bg-primary/75 px-4 py-2 font-sans uppercase text-primary-foreground backdrop-blur">
           {index !== undefined && <span className="text-accent">{index}</span>}
           <span>{title}</span>

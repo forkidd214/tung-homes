@@ -22,6 +22,7 @@ export default function Hero({}: HeroProps) {
           style={{
             objectFit: 'cover',
           }}
+          priority
         />
       </div>
       <div
