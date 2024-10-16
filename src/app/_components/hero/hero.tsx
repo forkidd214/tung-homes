@@ -36,9 +36,7 @@ export default function Hero({}: HeroProps) {
           <span className="block font-sans text-sm uppercase lg:text-base">
             Custom Home Building in Adelaide, SA
           </span>
-          <h1 className="font-serif text-4xl leading-tight lg:text-7xl">
-            Building More Than Your Dream Home
-          </h1>
+          <h1>Building More Than Your Dream Home</h1>
         </div>
         <Button asChild variant={'accent'} className="space-x-2">
           <Link href="tel:+10086">

@@ -12,12 +12,8 @@ export default function OurStory({}: OurStoryProps) {
         <div className="space-y-16 lg:mr-auto lg:w-1/2">
           {/* Title */}
           <div className="space-y-8">
-            <span className="block font-sans text-base font-semibold uppercase text-accent">
-              our story
-            </span>
-            <h2 className="font-serif text-3xl lg:text-5xl">
-              Making Dream Homes Come True
-            </h2>
+            <h2>our story</h2>
+            <h3>Making Dream Homes Come True</h3>
             <p>
               At Tung Homes, our focus is on YOU and what YOU want to achieve.
               We pride ourselves on forging strong, lasting relationships, which

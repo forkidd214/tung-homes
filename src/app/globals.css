@@ -68,4 +68,16 @@
     @apply bg-background font-sans text-foreground;
     overflow-x: hidden;
   }
+
+  h1 {
+    @apply font-serif text-4xl font-normal capitalize leading-tight lg:text-6xl;
+  }
+  h2 {
+    /* act more like labels than headings */
+    @apply font-sans text-base font-semibold uppercase text-accent;
+  }
+  h3 {
+    /* act more like slogans */
+    @apply font-serif text-2xl font-normal capitalize lg:text-4xl;
+  }
 }
