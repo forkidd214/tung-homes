@@ -40,16 +40,6 @@ export default function OurHomes({}: OurHomesProps) {
 
   return (
     <section className={cn('relative isolate mx-auto max-w-7xl px-8 py-16')}>
-      {/* Title */}
-      <div className="z-10 mb-16 space-y-8 lg:absolute lg:left-8 lg:top-40 lg:w-[calc(33%-2rem)]">
-        <span className="block font-sans text-base font-semibold uppercase text-accent">
-          our homes
-        </span>
-        <h2 className="font-serif text-3xl lg:text-5xl">
-          Beautifully Built and Crafted with Care
-        </h2>
-      </div>
-
       {/* Carousel */}
       <Carousel
         setApi={setApi}
@@ -59,14 +49,28 @@ export default function OurHomes({}: OurHomesProps) {
         }}
         // '50vw' counting scrollbar width leads to horizontal overflow
         // Solve the issue by adding overflow-x-hidden to body
-        className="mr-[calc(50%-50vw)] flex flex-col items-center gap-16 lg:flex-row-reverse lg:items-end lg:justify-between"
+        className="mr-[calc(50%-50vw)] flex flex-col items-center gap-16 lg:flex-row lg:items-start lg:justify-start"
       >
+        {/* Title */}
+        <div className="space-y-8 lg:mt-16 lg:basis-1/3">
+          <span className="block font-sans text-base font-semibold uppercase text-accent">
+            our homes
+          </span>
+          <h2 className="font-serif text-3xl lg:text-5xl">
+            Beautifully Built and Crafted with Care
+          </h2>
+        </div>
+
         {/* Carousel Content */}
         <CarouselContent className="w-full lg:basis-2/3">
           {PROJECTS.map((project, index) => (
-            <CarouselItem key={project.slug} className="basis-5/6 lg:basis-96">
+            <CarouselItem
+              key={project.slug}
+              // prevent showing all items to make carousel navigation work
+              className="basis-5/6 sm:basis-2/3 xl:basis-5/12"
+            >
               <ProjectCard
-                className={'aspect-[4/5]'}
+                className={'h-[25rem] lg:h-[32rem]'}
                 href={`/projects/${project.slug}`}
                 title={project.name}
                 index={index + 1}
@@ -75,7 +79,7 @@ export default function OurHomes({}: OurHomesProps) {
                   src={project.images[0]}
                   alt={project.images[0].alt}
                   fill
-                  sizes="(min-width: 1024px) 24rem, 83.33%"
+                  sizes="(min-width: 1280px) 42vw, (min-width: 640px) 67vw, 84vw"
                   style={{
                     objectFit: 'cover',
                   }}
@@ -90,12 +94,13 @@ export default function OurHomes({}: OurHomesProps) {
         <div
           // TODO: Add progress animation
           className={cn(
-            'relative isolate mr-8 w-fit space-x-0 rounded-full border shadow',
+            'relative isolate mr-8 min-w-fit max-w-fit space-x-0 rounded-full border shadow',
+            'lg:absolute lg:bottom-0 lg:left-0',
             '*:border-0 *:text-accent hover:*:bg-background hover:*:text-accent',
           )}
         >
-          <CarouselPrevious className="rounded-r-none" />
-          <CarouselNext className="rounded-l-none" />
+          <CarouselPrevious tabIndex={-1} className="rounded-r-none" />
+          <CarouselNext tabIndex={-1} className="rounded-l-none" />
           <ProgressBorder
             progress={scrollProgress}
             className="absolute inset-0 -z-10 grid place-content-center"
