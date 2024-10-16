@@ -12,12 +12,8 @@ export default function OurApproach({}: OurApproachProps) {
         <div className="space-y-16 lg:ml-auto lg:w-1/2">
           {/* Title */}
           <div className="space-y-8">
-            <span className="block font-sans text-base font-semibold uppercase text-accent">
-              our approach
-            </span>
-            <h2 className="font-serif text-3xl lg:text-5xl">
-              Uniquely Designed for What Matters to You
-            </h2>
+            <h2>our approach</h2>
+            <h3>Uniquely Designed for What Matters to You</h3>
             <p>
               We craft custom homes that look and feel like only you could live
               there. And we do it by working hand-in-hand with you throughout

@@ -53,12 +53,8 @@ export default function OurHomes({}: OurHomesProps) {
       >
         {/* Title */}
         <div className="space-y-8 lg:mt-16 lg:basis-1/3">
-          <span className="block font-sans text-base font-semibold uppercase text-accent">
-            our homes
-          </span>
-          <h2 className="font-serif text-3xl lg:text-5xl">
-            Beautifully Built and Crafted with Care
-          </h2>
+          <h2>our homes</h2>
+          <h3>Beautifully Built and Crafted with Care</h3>
         </div>
 
         {/* Carousel Content */}
