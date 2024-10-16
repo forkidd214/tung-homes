@@ -12,8 +12,8 @@
     --popover-foreground: 20 14.3% 4.1%;
     --primary: 30 6% 25%;
     --primary-foreground: 20 6% 90%;
-    --secondary: 60 5% 96%;
-    --secondary-foreground: 12 6% 15%;
+    --secondary: 25 21% 89%;
+    --secondary-foreground: 55 11% 24%;
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
     --accent: 26 90% 37%;
@@ -65,7 +65,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-foreground;
     overflow-x: hidden;
   }
 }
