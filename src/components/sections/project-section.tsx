@@ -14,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '@/components/carousel'
+import { H2, H3, Paragraph } from '../typography'
 
 function ProjectSection() {
   const [api, setApi] = React.useState<CarouselApi>()
@@ -52,8 +53,12 @@ function ProjectSection() {
         >
           {/* Title */}
           <div className="mx-auto max-w-sm space-y-4 sm:mt-16 sm:flex-shrink-0 sm:basis-1/3">
-            <h2>our homes</h2>
-            <h3>built with quality at affordable prices</h3>
+            <H2>our homes</H2>
+            <H3 as="p">built with quality at affordable prices</H3>
+            <Paragraph>
+              Quality is never sacrificed at Tung Homes. We source the best
+              products & materials and use only experienced trades.
+            </Paragraph>
           </div>
 
           {/* Carousel Content */}

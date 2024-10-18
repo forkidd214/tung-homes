@@ -5,7 +5,7 @@
 @layer base {
   :root {
     --background: 60 9% 98%;
-    --foreground: 20 14% 4%;
+    --foreground: 33 5% 32%;
 
     --primary: 56 11% 24%;
     --primary-foreground: 60 33% 99%;
@@ -20,17 +20,5 @@
 @layer base {
   body {
     @apply bg-background font-sans text-foreground;
-  }
-
-  h1 {
-    @apply font-serif text-4xl font-normal capitalize leading-tight sm:text-6xl;
-  }
-  h2 {
-    /* act more like labels than headings */
-    @apply font-sans text-base font-semibold uppercase text-secondary-foreground;
-  }
-  h3 {
-    /* serve as slogans */
-    @apply font-serif text-2xl font-bold capitalize tracking-tight text-primary sm:text-4xl;
   }
 }

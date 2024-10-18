@@ -1,7 +1,8 @@
-import Link from 'next/link'
-import { ButtonLink } from '@/components/button'
-import decoImage from '../../../public/images/home-service.webp'
 import Image from 'next/image'
+
+import decoImage from '../../../public/images/home-service.webp'
+import { H2, H3, Paragraph } from '../typography'
+import { ButtonLink } from '../button'
 
 function ServiceSection() {
   return (
@@ -10,13 +11,13 @@ function ServiceSection() {
         <div className="space-y-6 lg:ml-auto lg:w-1/2">
           {/* Content */}
           <div className="space-y-4">
-            <h2>our approach</h2>
-            <h3>tried and true</h3>
-            <p>
+            <H2>our approach</H2>
+            <H3 as="p">tried and true</H3>
+            <Paragraph>
               We craft custom homes that look and feel like only you could live
               there. And we do it by working hand-in-hand with you throughout
               the entire experience.
-            </p>
+            </Paragraph>
           </div>
 
           {/* Call to action */}
