@@ -1,10 +1,9 @@
-import { Phone } from 'lucide-react'
 import Image from 'next/image'
-import Link from 'next/link'
 
 import bgImage from '../../../public/images/home-hero.webp'
 import { cn } from '@/lib/utils'
 import { ButtonLink } from '@/components/button'
+import { H1 } from '../typography'
 
 function HeroSection() {
   return (
@@ -31,10 +30,10 @@ function HeroSection() {
         )}
       >
         <div className="space-y-4">
-          <span className="block font-sans text-sm uppercase sm:text-base">
+          <span className="block font-sans text-sm uppercase tracking-wide sm:text-base">
             Custom Home Building in Adelaide, SA
           </span>
-          <h1>Building More Than Your Dream Home</h1>
+          <H1>Building More Than Your Dream Home</H1>
         </div>
         <ButtonLink
           href={'tel:+10086'}

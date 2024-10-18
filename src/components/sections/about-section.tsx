@@ -1,10 +1,8 @@
-import Link from 'next/link'
-import { ArrowLink, Button } from '@/components/button'
-import decoImage from '../../../public/images/home-about.webp'
 import Image from 'next/image'
-import { ArrowRight } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import React from 'react'
+
+import decoImage from '../../../public/images/home-about.webp'
+import { H2, H3, Paragraph } from '../typography'
+import { ArrowLink } from '../button'
 
 function AboutSection() {
   return (
@@ -14,14 +12,14 @@ function AboutSection() {
       <div className="flex flex-col items-stretch justify-start gap-8 md:flex-row md:items-center md:justify-around lg:min-h-[33rem]">
         <div className="mx-auto max-w-sm space-y-6">
           {/* Content */}
-          <div className="space-y-4 text-primary">
-            <h2>our story</h2>
-            <h3>Making Dream Homes Come True</h3>
-            <p>
+          <div className="space-y-4">
+            <H2>our story</H2>
+            <H3 as="p">Making Dream Homes Come True</H3>
+            <Paragraph>
               At Tung Homes, our focus is on YOU and what YOU want to achieve.
               We pride ourselves on forging strong, lasting relationships, which
               help us to continue to thrive and develop.
-            </p>
+            </Paragraph>
           </div>
 
           {/* Call to action */}
