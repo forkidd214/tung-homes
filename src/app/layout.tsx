@@ -1,8 +1,9 @@
 import { Roboto_Flex, Roboto_Slab } from 'next/font/google'
 import type { Metadata } from 'next'
+
 import './globals.css'
 import { cn } from '@/lib/utils'
-import Header from './_components/header'
+import Header from '@/components/header'
 
 const robotoSans = Roboto_Flex({
   subsets: ['latin'],

@@ -4,11 +4,9 @@ import { useLayoutEffect, useState } from 'react'
 
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
-import Logo from '../logo'
+import Logo from './logo'
 
-type HeaderProps = {}
-
-export default function Header({}: HeaderProps) {
+function Header() {
   const state = useHeaderScroll()
 
   return (
@@ -23,7 +21,7 @@ export default function Header({}: HeaderProps) {
         state === 'solid' && 'bg-primary',
       )}
     >
-      <Link href={'/'} aria-label='Tung Homes'>
+      <Link href={'/'} aria-label="Tung Homes">
         <Logo className="h-12 w-auto lg:h-14" />
       </Link>
     </header>
@@ -69,3 +67,5 @@ function useHeaderScroll() {
 
   return state
 }
+
+export default Header

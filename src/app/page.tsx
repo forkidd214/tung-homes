@@ -1,17 +1,15 @@
-import Hero from './_components/hero'
-import OurHomes from './_components/our-homes'
-import OurApproach from './_components/our-approach'
-import OurStory from './_components/our-story'
-import CallToAction from './_components/call-to-action'
+import HeroSection from '@/components/sections/hero-section'
+import ProjectSection from '@/components/sections/project-section'
+import ServiceSection from '@/components/sections/service-section'
+import AboutSection from '../components/sections/about-section'
 
 export default function Home() {
   return (
-    <div className="lg:space-y-32">
-      <Hero />
-      <OurHomes />
-      <OurApproach />
-      <OurStory />
-      <CallToAction />
+    <div className="sm:space-y-32">
+      <HeroSection />
+      <ProjectSection />
+      <ServiceSection />
+      <AboutSection />
     </div>
   )
 }
