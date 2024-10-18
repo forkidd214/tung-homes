@@ -6,11 +6,7 @@ type LogoProps = {
   className?: string
 }
 
-export default function Logo({
-  size = 60,
-  color = 'currentColor',
-  className,
-}: LogoProps) {
+function Logo({ size = 60, color = 'currentColor', className }: LogoProps) {
   // If height is not provided, calculate it based on the width and aspect ratio
   const aspectRatio = 188 / 80
   const height = size
@@ -55,3 +51,5 @@ export default function Logo({
     </svg>
   )
 }
+
+export default Logo

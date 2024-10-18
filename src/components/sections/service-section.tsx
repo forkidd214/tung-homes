@@ -1,19 +1,17 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import heroImage from '../../../../public/images/hero-approach.webp'
+import { ButtonLink } from '@/components/button'
+import decoImage from '../../../public/images/home-service.webp'
 import Image from 'next/image'
 
-type OurApproachProps = {}
-
-export default function OurApproach({}: OurApproachProps) {
+function ServiceSection() {
   return (
     <section className="relative mx-auto max-w-7xl">
-      <div className="bg-secondary px-8 py-16 text-secondary-foreground lg:ml-auto lg:w-5/6">
-        <div className="space-y-16 lg:ml-auto lg:w-1/2">
-          {/* Title */}
-          <div className="space-y-8">
+      <div className="bg-background px-8 py-16 text-foreground lg:ml-auto lg:w-5/6">
+        <div className="space-y-6 lg:ml-auto lg:w-1/2">
+          {/* Content */}
+          <div className="space-y-4">
             <h2>our approach</h2>
-            <h3>Uniquely Designed for What Matters to You</h3>
+            <h3>tried and true</h3>
             <p>
               We craft custom homes that look and feel like only you could live
               there. And we do it by working hand-in-hand with you throughout
@@ -23,18 +21,20 @@ export default function OurApproach({}: OurApproachProps) {
 
           {/* Call to action */}
           <div className="flex flex-row justify-center lg:justify-start">
-            <Button asChild variant={'default'} className="space-x-2">
-              <Link href="/service">
-                <span>discover our approach</span>
-              </Link>
-            </Button>
+            <ButtonLink
+              href="/service"
+              variant={'secondary'}
+              icon="pencilRuler"
+            >
+              discover our approach
+            </ButtonLink>
           </div>
         </div>
 
         {/* Decoration image */}
         <div className="relative z-10 mt-16 aspect-[3/2] lg:absolute lg:left-0 lg:top-1/2 lg:mt-0 lg:w-1/2 lg:-translate-y-1/2">
           <Image
-            src={heroImage}
+            src={decoImage}
             alt=""
             sizes="(min-width: 1024px) 50vw, 100vw"
             fill
@@ -45,3 +45,5 @@ export default function OurApproach({}: OurApproachProps) {
     </section>
   )
 }
+
+export default ServiceSection
