@@ -30,11 +30,11 @@ function Title({
 }: TitleProps & {
   size: NonNullable<VariantProps<typeof titleVariants>['size']>
 }) {
-  const Comp = as ?? size
+  const Tag = as ?? size
   return (
-    <Comp className={cn(titleVariants({ size, className }))} {...rest}>
+    <Tag className={cn(titleVariants({ size, className }))} {...rest}>
       {transformText(children, toSentenceCase)}
-    </Comp>
+    </Tag>
   )
 }
 
@@ -76,11 +76,11 @@ interface ParagraphProps extends React.ComponentPropsWithoutRef<'p'> {
 function Paragraph({
   className,
   isProse = true,
-  as: Comp = 'p',
+  as: Tag = 'p',
   ...rest
 }: ParagraphProps) {
   return (
-    <Comp
+    <Tag
       className={cn(
         'max-w-full font-sans text-base text-foreground',
         isProse && 'max-w-prose',

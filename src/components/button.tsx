@@ -39,10 +39,10 @@ export interface ButtonProps
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button'
+    const Tag = asChild ? Slot : 'button'
 
     return (
-      <Comp
+      <Tag
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
         {...props}
@@ -91,7 +91,7 @@ function ButtonLink({
   icon,
   children,
   ...rest
-}: React.ComponentProps<typeof Link> &
+}: React.ComponentPropsWithRef<typeof Link> &
   VariantProps<typeof buttonVariants> & {
     icon?: keyof typeof icons
   }) {
