@@ -26,14 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          `${robotoSans.variable} ${robotoSerif.variable}`,
-          'flex min-h-svh flex-col',
-        )}
-      >
+      <body className={cn(`${robotoSans.variable} ${robotoSerif.variable}`)}>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main>{children}</main>
       </body>
     </html>
   )

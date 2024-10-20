@@ -1,33 +1,47 @@
 import Image from 'next/image'
 
-import decoImage from '../../../public/images/home-about.webp'
+import { homeAboutImage as decoImage } from '@/data'
+import { cn } from '@/lib/utils'
+import { Grid } from '../grid'
 import { H2, H3, Paragraph } from '../typography'
 import { ArrowLink } from '../button'
 
 function AboutSection() {
   return (
-    <section className="relative isolate mx-auto max-w-7xl px-8 py-16">
-      <div className="absolute inset-0 -z-10 bg-secondary md:w-5/6" />
+    <Grid className="isolate gap-y-8 py-[10vw] lg:py-28">
+      {/* Background */}
+      <div
+        className={cn(
+          'absolute inset-0 -z-10 bg-secondary',
+          'mx-[-10vw] md:mr-[10vw] lg:ml-0 lg:mr-[20%]',
+        )}
+      />
 
-      <div className="flex flex-col items-stretch justify-start gap-8 md:flex-row md:items-center md:justify-around lg:min-h-[33rem]">
-        <div className="mx-auto max-w-sm space-y-6">
-          {/* Content */}
-          <div className="space-y-4">
-            <H2>our story</H2>
-            <H3 as="p">Making Dream Homes Come True</H3>
-            <Paragraph>
-              At Tung Homes, our focus is on YOU and what YOU want to achieve.
-              We pride ourselves on forging strong, lasting relationships, which
-              help us to continue to thrive and develop.
-            </Paragraph>
-          </div>
-
-          {/* Call to action */}
-          <ArrowLink href="/about">get to know us</ArrowLink>
+      {/* Content */}
+      <div
+        className={cn(
+          'col-span-full md:col-span-5 md:place-items-center lg:col-start-2 2xl:col-span-4 2xl:col-start-3',
+        )}
+      >
+        <div className="mb-6 space-y-4">
+          <H2>our story</H2>
+          <H3 as="p">Making Dream Homes Come True</H3>
+          <Paragraph>
+            At Tung Homes, our focus is on YOU and what YOU want to achieve. We
+            pride ourselves on forging strong, lasting relationships, which help
+            us to continue to thrive and develop.
+          </Paragraph>
         </div>
+        <ArrowLink href="/about">get to know us</ArrowLink>
+      </div>
 
-        {/* Decoration image */}
-        <div className="relative mx-auto h-64 w-full max-w-sm md:mx-0 md:-mr-8 md:h-96 md:max-w-none md:basis-5/12">
+      {/* Decoration image */}
+      <div
+        className={cn(
+          'col-span-full md:col-span-3 md:mr-[-10vw] lg:col-span-5 lg:-col-end-1 lg:mr-0',
+        )}
+      >
+        <div className="relative h-64 md:h-80">
           <Image
             src={decoImage}
             alt=""
@@ -37,7 +51,7 @@ function AboutSection() {
           />
         </div>
       </div>
-    </section>
+    </Grid>
   )
 }
 

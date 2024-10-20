@@ -19,6 +19,6 @@
 
 @layer base {
   body {
-    @apply bg-background font-sans text-foreground;
+    @apply overflow-x-hidden bg-background font-sans text-foreground;
   }
 }

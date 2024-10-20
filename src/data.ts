@@ -1,5 +1,17 @@
 import { StaticImageData } from 'next/image'
 
+/**
+ * common images
+ */
+import homeHeroImage from '../public/images/home-hero.webp'
+import homeServiceImage from '../public/images/home-service.webp'
+import homeAboutImage from '../public/images/home-about.webp'
+
+export { homeHeroImage, homeServiceImage, homeAboutImage }
+
+/**
+ * project images
+ */
 import moderOasisImage1 from '../public/projects/modern-oasis/image-1.webp'
 import moderOasisImage2 from '../public/projects/modern-oasis/image-2.webp'
 import moderOasisImage3 from '../public/projects/modern-oasis/image-3.webp'
