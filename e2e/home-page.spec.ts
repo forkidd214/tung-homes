@@ -13,7 +13,7 @@ test('Hero section works correctly', async ({ page }) => {
   await expect(heroHeading).toContainText(/Building More Than Your Dream Home/i)
 
   // Assert that the call-to-action button is visible
-  const ctaButton = page.getByRole('link', { name: /talk to our team/i })
+  const ctaButton = page.getByRole('link', { name: /get a quote/i })
   await expect(ctaButton).toBeVisible()
 
   // Click on the logo and verify navigation
@@ -29,10 +29,11 @@ test('Projects section works correctly', async ({ page }) => {
   await page.goto('/')
 
   // Verify the heading of the projects section
-  const homesHeading = page.locator('h2')
-  await expect(homesHeading).toContainText(
-    /Beautifully Built and Crafted with Care/i,
-  )
+  const homesHeading = page.getByRole('heading', {
+    level: 2,
+    name: /our homes/i,
+  })
+  await expect(homesHeading).toBeVisible()
 
   // Check the visibility of navigation buttons
   const prevBtn = page.getByRole('button', { name: /Previous slide/i })
