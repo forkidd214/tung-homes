@@ -3,9 +3,12 @@
 import React from 'react'
 import Image, { StaticImageData } from 'next/image'
 import Link from 'next/link'
+import { Slot } from '@radix-ui/react-slot'
 
-import { cn } from '@/lib/utils'
 import { PROJECTS } from '@/data'
+import { cn } from '@/lib/utils'
+import { Grid } from '../grid'
+import { H2, H3, Paragraph } from '../typography'
 import {
   type CarouselApi,
   Carousel,
@@ -13,8 +16,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from '@/components/carousel'
-import { H2, H3, Paragraph } from '../typography'
+} from '../carousel'
 
 function ProjectSection() {
   const [api, setApi] = React.useState<CarouselApi>()
@@ -38,75 +40,135 @@ function ProjectSection() {
   }, [api, onScroll])
 
   return (
-    <div className="w-full overflow-x-hidden">
-      <section className={cn('relative isolate mx-auto max-w-7xl px-8 py-16')}>
-        {/* Carousel */}
+    <Grid className="gap-y-8">
+      {/* Title */}
+      <GridItemWrapper item="title">
+        <div className="space-y-4">
+          <H2>our homes</H2>
+          <H3 as="p">built with quality at affordable prices</H3>
+          <Paragraph>
+            Quality is never sacrificed at Tung Homes. We source the best
+            products & materials and use only experienced trades.
+          </Paragraph>
+        </div>
+      </GridItemWrapper>
+
+      {/* Carousel Provider */}
+      <GridItemWrapper item="carousel">
         <Carousel
           setApi={setApi}
           opts={{
             align: 'start',
             loop: true,
           }}
-          // '50vw' counting scrollbar width leads to horizontal overflow
-          // Solve the issue by adding overflow-x-hidden to the section root
-          className="mr-[calc(50%-50vw)] flex flex-col items-start gap-6 sm:flex-row sm:items-start sm:justify-start"
         >
-          {/* Title */}
-          <div className="mx-auto max-w-sm space-y-4 sm:mt-16 sm:flex-shrink-0 sm:basis-1/3">
-            <H2>our homes</H2>
-            <H3 as="p">built with quality at affordable prices</H3>
-            <Paragraph>
-              Quality is never sacrificed at Tung Homes. We source the best
-              products & materials and use only experienced trades.
-            </Paragraph>
-          </div>
-
           {/* Carousel Content */}
-          <CarouselContent className="w-full sm:basis-auto">
-            {PROJECTS.map((project, index) => (
-              <CarouselItem
-                key={project.slug}
-                // prevent showing all items to make carousel navigation work
-                className="basis-5/6 md:basis-2/3 lg:basis-3/5 xl:basis-5/12"
-              >
-                <ProjectCard
-                  className={'h-[25rem] lg:h-[32rem]'}
-                  href={`/projects/${project.slug}`}
-                  title={project.name}
-                  image={{
-                    src: project.images[0],
-                    alt: project.images[0].alt,
-                    sizes:
-                      '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw',
-                  }}
-                  index={index + 1}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
+          <GridItemWrapper item="carousel-content">
+            <CarouselContent className="w-full">
+              {PROJECTS.map((project, index) => (
+                <CarouselItem
+                  key={project.slug}
+                  // prevent showing all items to make carousel navigation work
+                  className="basis-5/6 md:basis-2/3 lg:basis-3/5 xl:basis-5/12"
+                >
+                  <ProjectCard
+                    className={'h-[25rem] lg:h-[32rem]'}
+                    href={`/projects/${project.slug}`}
+                    title={project.name}
+                    image={{
+                      src: project.images[0],
+                      alt: project.images[0].alt,
+                      sizes:
+                        '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw',
+                    }}
+                    index={index + 1}
+                  />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </GridItemWrapper>
 
-          {/* Carousel Buttons */}
-          <div
-            className={cn(
-              'relative isolate mr-8 inline-flex min-w-fit max-w-fit flex-row items-center self-center rounded-full shadow ring-1 ring-ring',
-              'sm:absolute sm:bottom-0 sm:left-0',
-              'text-secondary-foreground',
-            )}
-          >
-            <CarouselPrevious tabIndex={-1} className="rounded-r-none ring-0" />
-            <CarouselNext tabIndex={-1} className="rounded-l-none ring-0" />
-            <ProgressRing
-              width={98}
-              height={50}
-              strokeWidth={2}
-              progress={scrollProgress}
-              className="absolute inset-0 -z-10"
-            />
-          </div>
+          {/* Carousel Control */}
+          <GridItemWrapper item="carousel-control">
+            <div
+              className={cn(
+                'relative isolate inline-flex min-w-fit max-w-fit flex-row items-center self-center rounded-full shadow ring-1 ring-ring',
+                'text-secondary-foreground',
+              )}
+            >
+              <CarouselPrevious
+                tabIndex={-1}
+                className="rounded-r-none ring-0"
+              />
+              <CarouselNext tabIndex={-1} className="rounded-l-none ring-0" />
+              <ProgressRing
+                width={98}
+                height={50}
+                strokeWidth={2}
+                progress={scrollProgress}
+                className="absolute inset-0 -z-10"
+              />
+            </div>
+          </GridItemWrapper>
         </Carousel>
-      </section>
-    </div>
+      </GridItemWrapper>
+    </Grid>
   )
+}
+
+function GridItemWrapper({
+  item,
+  children,
+}: {
+  item: 'title' | 'carousel' | 'carousel-content' | 'carousel-control'
+  children: React.ReactNode
+}) {
+  switch (item) {
+    case 'title':
+      return (
+        <div
+          className={cn(
+            'col-span-full',
+            'sm:col-span-2 sm:self-center',
+            'md:col-span-3',
+            'lg:col-span-4',
+          )}
+        >
+          {children}
+        </div>
+      )
+    case 'carousel':
+      return <Slot className={cn('contents')}>{children}</Slot>
+    case 'carousel-content':
+      return (
+        <div
+          className={cn(
+            'col-span-full mr-[-10vw]',
+            'sm:col-span-2 sm:row-span-2',
+            'md:col-span-5',
+            'lg:col-span-8 lg:mr-[calc(75%-50vw)]',
+          )}
+        >
+          {children}
+        </div>
+      )
+    case 'carousel-control':
+      return (
+        <div
+          className={cn(
+            'col-span-full justify-self-center',
+            'sm:col-span-2 sm:self-end sm:justify-self-start',
+            'md:col-span-3',
+            'lg:col-span-4',
+          )}
+        >
+          {children}
+        </div>
+      )
+    default:
+      break
+  }
+  throw new Error(`<GridItemWrapper /> has invalid props ${{ item }}`)
 }
 
 function ProjectCard({
