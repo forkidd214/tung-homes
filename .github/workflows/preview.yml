@@ -35,6 +35,9 @@ jobs:
     name: Playwright
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.48.1-jammy
+      options: --user 1001
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -56,9 +59,6 @@ jobs:
 
       - name: Build app
         run: pnpm build
-
-      - name: Install Playwright Browsers
-        run: pnpm exec playwright install --with-deps
 
       - name: Run Playwright tests
         run: pnpm exec playwright test
