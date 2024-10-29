@@ -14,6 +14,7 @@ export default function Home() {
       <ServiceSection />
       <Spacer />
       <AboutSection />
+      <Spacer className="hidden md:block" />
     </div>
   )
 }
