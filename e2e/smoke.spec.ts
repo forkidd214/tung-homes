@@ -4,7 +4,10 @@ test('App loads and nav works', async ({ page }) => {
   await page.goto('/')
 
   // Click the logo link.
-  await page.getByRole('link', { name: 'tung homes' }).click()
+  await page
+    .getByRole('banner')
+    .getByRole('link', { name: 'tung homes' })
+    .click()
 
   // Expects page to have a heading with the name of slogan.
   await expect(
