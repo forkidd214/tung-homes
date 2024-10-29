@@ -5,7 +5,9 @@ test('Hero section works correctly', async ({ page }) => {
   await page.goto('/')
 
   // Assert that the logo is visible and has the correct link
-  const logoLink = page.getByRole('link', { name: /tung homes/i })
+  const logoLink = page
+    .getByRole('banner')
+    .getByRole('link', { name: /tung homes/i })
   await expect(logoLink).toBeVisible()
 
   // Assert that the hero heading contains the expected text
