@@ -28,13 +28,13 @@ import baysideImage1 from '../public/projects/bayside/image-1.webp'
 import baysideImage2 from '../public/projects/bayside/image-2.webp'
 import baysideImage3 from '../public/projects/bayside/image-3.webp'
 
-type Image = StaticImageData & {
+export type Image = StaticImageData & {
   slug: string
   src: string
   alt: string
 }
 
-type Project = {
+export type Project = {
   slug: string
   name: string
   description: string
