@@ -19,7 +19,8 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from '@/components/carousel'
-import { PROJECTS, type Image, type Project } from '@/data'
+import { PROJECTS, type Image, type Project, projectCTAImage } from '@/data'
+import { ButtonLink } from '@/components/button'
 
 export async function generateStaticParams() {
   return PROJECTS.map((p) => ({
@@ -83,7 +84,7 @@ export default async function Page({
                   ))}
                 </ul>
               </div>
-              <div className="absolute bottom-0 left-1/2 -z-10 h-1/2 w-svw -translate-x-1/2 bg-background" />
+              <div className="absolute -bottom-0.5 left-1/2 -z-10 h-1/2 w-svw -translate-x-1/2 bg-background" />
             </div>
           </div>
         </Grid>
@@ -179,14 +180,42 @@ function ProjectDetails({
 
 /**
  * ProjectCTA
- *
- * TODO: to be implemented
  */
 function ProjectCTA() {
   return (
-    <Grid>
-      <div className="col-span-full">
-        <div className="h-64 bg-stone-200">Call to action placeholder</div>
+    <Grid className="gap-y-8">
+      <div className="col-span-full md:col-span-4 lg:col-span-6">
+        <div>
+          <H3>ready to begin making your dream home a reality?</H3>
+          <Paragraph className="mt-4">
+            We&apos;d love to help turn your wild ideas into a place your family
+            can call home. Let&apos;s get started with a quick call or email, so
+            we can set up a consultation.
+          </Paragraph>
+          <div className="mt-6 text-center md:mt-10 lg:mt-16">
+            <ButtonLink
+              href={'tel:+10086'}
+              icon="receiptText"
+              variant={'primary'}
+              size={'lg'}
+            >
+              get a quote
+            </ButtonLink>
+          </div>
+        </div>
+      </div>
+      <div className="col-span-full md:col-span-4 lg:col-span-6">
+        <div className="relative h-64 md:h-80">
+          <NextImage
+            src={projectCTAImage}
+            alt=""
+            fill
+            sizes="(min-width: 768px) 50vw, 100vw"
+            style={{
+              objectFit: 'cover',
+            }}
+          />
+        </div>
       </div>
     </Grid>
   )

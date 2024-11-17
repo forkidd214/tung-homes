@@ -6,8 +6,9 @@ import { StaticImageData } from 'next/image'
 import homeHeroImage from '../public/images/home-hero.webp'
 import homeServiceImage from '../public/images/home-service.webp'
 import homeAboutImage from '../public/images/home-about.webp'
+import projectCTAImage from '../public/images/project-cta.webp'
 
-export { homeHeroImage, homeServiceImage, homeAboutImage }
+export { homeHeroImage, homeServiceImage, homeAboutImage, projectCTAImage }
 
 /**
  * project images
